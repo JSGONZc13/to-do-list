@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:to_do_list_app/Global/presentation/components/buttons.dart';
+import 'package:to_do_list_app/Global/presentation/components/inputs.dart';
+import 'package:to_do_list_app/Global/presentation/styles/colors.dart';
+import 'package:to_do_list_app/Global/presentation/styles/fonts.dart';
+import 'package:to_do_list_app/Global/presentation/styles/properties.dart';
 import 'package:to_do_list_app/Tasks/domain/entities/task.dart';
 import 'package:to_do_list_app/Tasks/presentation/provider/task_provider.dart';
 
@@ -12,47 +17,50 @@ class TaskPage extends StatelessWidget {
     final provider = Provider.of<TaskProvider>(context);
 
     void addTask() {
-      provider.addTask(Task(strTitle: controller.text));
-      controller.clear();
+      if (controller.text.isNotEmpty) {
+        provider.addTask(Task(strTitle: controller.text));
+        controller.clear();
+      }
     }
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Task Page'),
-      ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    controller: controller,
-                    decoration: const InputDecoration(hintText: 'Enter task'),
+        backgroundColor: cWhite,
+        body: Padding(
+          padding: const EdgeInsets.all(smlRadius),
+          child: Column(
+            children: [
+              Expanded(
+                child: ListView.builder(
+                  itemCount: provider.tasks.length,
+                  itemBuilder: (_, i) => ListTile(
+                    title: Text(provider.tasks[i].strTitle ?? ''),
                   ),
                 ),
-                IconButton(
-                  icon: const Icon(Icons.add),
-                  onPressed: () {
-                    if (controller.text.isNotEmpty) {
-                      addTask();
-                    }
-                  },
-                ),
-              ],
-            ),
-          ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: provider.tasks.length,
-              itemBuilder: (_, i) => ListTile(
-                title: Text(provider.tasks[i].strTitle ?? ''),
               ),
-            ),
+              Padding(
+                padding: const EdgeInsets.all(smlRadius),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: TextField(
+                        controller: controller,
+                        decoration: textFieldDecoration,
+                        style: pFont,
+                      ),
+                    ),
+                    const SizedBox(width: medRadius),
+                    IconButton.filled(
+                      style: buttonStyle,
+                      icon: const Icon(Icons.add),
+                      onPressed: () {
+                        addTask();
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
-    );
+        ));
   }
 }
