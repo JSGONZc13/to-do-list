@@ -31,11 +31,25 @@ class TaskPage extends StatelessWidget {
             children: [
               Expanded(
                 child: ListView.builder(
-                  itemCount: provider.tasks.length,
-                  itemBuilder: (_, i) => ListTile(
-                    title: Text(provider.tasks[i].strTitle ?? ''),
-                  ),
-                ),
+                    itemCount: provider.tasks.length,
+                    itemBuilder: (_, i) => Card.filled(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(smlRadius),
+                        ),
+                        color: cGrey,
+                        child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: medRadius, vertical: medRadius),
+                            child: Row(
+                              children: [
+                                Text(
+                                  provider.tasks[i].strTitle.toString(),
+                                  style: pFont,
+                                ),
+                                const Spacer(),
+                                const Icon(Icons.check_circle_outline),
+                              ],
+                            )))),
               ),
               Padding(
                 padding: const EdgeInsets.all(smlRadius),
