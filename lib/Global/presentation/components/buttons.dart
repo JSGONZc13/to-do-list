@@ -6,3 +6,9 @@ const buttonStyle = ButtonStyle(
   backgroundColor: MaterialStatePropertyAll(cPrimary),
   padding: MaterialStatePropertyAll(EdgeInsets.all(medRadius)),
 );
+final buttonActionStyle = ButtonStyle(
+  padding: const MaterialStatePropertyAll(EdgeInsets.all(0)),
+  shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(smlRadius), // rounded corners
+  )),
+);

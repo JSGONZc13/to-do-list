@@ -6,3 +6,5 @@ const cGrey = Color(0xfff4f4f4);
 const cPrimary = Color(0xffbd3354);
 const cSecondary = Color(0xff3398bd);
 const cTransparent = Colors.transparent;
+
+const cError = Color(0xffdc0000);
