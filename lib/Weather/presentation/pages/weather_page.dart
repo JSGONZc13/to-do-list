@@ -17,13 +17,15 @@ class _WeatherPageState extends State<WeatherPage> {
         child: Consumer<WeatherProvider>(builder: (context, provider, _) {
           return Scaffold(
             body: Center(
-                child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('LAT: ${provider.position?.latitude ?? ""}'),
-                Text('LNG: ${provider.position?.longitude ?? ""}'),
-              ],
-            )),
+                child: provider.position == null
+                    ? const CircularProgressIndicator()
+                    : Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('LAT: ${provider.position?.latitude ?? ""}'),
+                          Text('LNG: ${provider.position?.longitude ?? ""}'),
+                        ],
+                      )),
           );
         }));
   }
