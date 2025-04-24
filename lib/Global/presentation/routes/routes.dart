@@ -1,28 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_list_app/Tasks/presentation/pages/task_page.dart';
+import 'package:to_do_list_app/Weather/presentation/pages/weather_page.dart';
 
-final pages = [
+final List<Map<String, Object?>> pages = [
   {
     'path': '/tasks',
     'label': 'Tasks',
     'iconActive': Icons.task,
     'iconInactive': Icons.task_outlined,
-    'page': TaskPage()
+    'page': const TaskPage()
   },
   {
     'path': '/weather',
     'label': 'Weather',
     'iconActive': Icons.cloud,
     'iconInactive': Icons.cloud_outlined,
+    'page': const WeatherPage()
+  },
+  {
+    'path': '/profile',
+    'label': 'Profile',
+    'iconActive': Icons.person,
+    'iconInactive': Icons.person_outline,
     'page': null
   }
 ];
 
 //RENDERER ROUTE SIMULATION (OUTLET)
 Widget renderRoute(String path) {
-  final page =
-      pages.firstWhere((page) => page['path'] == path, orElse: () => {});
-  if (page['page'] != null) {
+  final page = pages.firstWhere(
+    (page) => page['path'] == path,
+    orElse: () => {},
+  );
+
+  if (page.isNotEmpty && page['page'] != null) {
     return page['page'] as Widget;
   } else {
     return Container(

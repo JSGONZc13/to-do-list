@@ -22,7 +22,8 @@ class _DashboardState extends State<Dashboard> {
           ),
           backgroundColor: cWhite,
         ),
-        body: renderRoute(pages[index]['path']!.toString()),
+        body: SafeArea(
+            child: renderRoute(pages[index]['path']!.toString())),
         bottomNavigationBar: NavigationBarTheme(
           data: NavigationBarThemeData(
             indicatorColor: cTransparent,
