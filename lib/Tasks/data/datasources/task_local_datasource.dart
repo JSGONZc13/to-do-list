@@ -21,4 +21,16 @@ class TaskLocalDataSource {
       whereArgs: [task.intId],
     );
   }
+
+  Future<void> updateTask(TaskModel task) async {
+    final db = await DataBaseHelper.instance.database;
+    await db.update(
+      'tasks',
+      {
+        'intIdDone': 1,
+      },
+      where: 'intId = ?',
+      whereArgs: [task.intId],
+    );
+  }
 }

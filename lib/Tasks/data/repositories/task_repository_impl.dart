@@ -9,8 +9,8 @@ class TaskRepositoryImpl implements TaskRepository {
 
   @override
   Future<void> addTask(Task task) async {
-    await taskLocalDataSource.addTask(
-        TaskModel(strTitle: task.strTitle, intIdDone: 0));
+    await taskLocalDataSource
+        .addTask(TaskModel(strTitle: task.strTitle, intIdDone: 0));
   }
 
   @override
@@ -21,4 +21,10 @@ class TaskRepositoryImpl implements TaskRepository {
 
   @override
   Future<List<Task>> getTasks() async => await taskLocalDataSource.getTasks();
+
+  @override
+  Future<void> updateTask(Task task) async {
+    await taskLocalDataSource.updateTask(TaskModel(
+        intId: task.intId, strTitle: task.strTitle, intIdDone: task.intIdDone));
+  }
 }

@@ -31,6 +31,10 @@ class TaskPage extends StatelessWidget {
             provider.delTask(task);
           }
 
+          void updateTask(Task task) {
+            provider.updateTask(task);
+          }
+
           return Scaffold(
             backgroundColor: cWhite,
             body: Padding(
@@ -42,21 +46,42 @@ class TaskPage extends StatelessWidget {
                       itemCount: provider.tasks.length,
                       itemBuilder: (_, i) => Card.filled(
                         shape: cardShape,
-                        color: cGrey,
+                        color:
+                            provider.tasks[i].intIdDone == 1 ? cSuccess : cGrey,
                         child: Padding(
                           padding: cardPadding,
                           child: Row(
                             children: [
                               Text(
-                                provider.tasks[i].strTitle.toString(),
-                                style: h6Font,
+                                '${provider.tasks[i].strTitle}',
+                                style: h6Font.copyWith(
+                                  color: provider.tasks[i].intIdDone == 1
+                                      ? cWhite
+                                      : cBlack,
+                                ),
                               ),
                               const Spacer(),
-                              IconButton(
-                                  color: cError,
-                                  style: buttonActionStyle,
-                                  onPressed: () => delTask(provider.tasks[i]),
-                                  icon: const Icon(Icons.delete)),
+                              Row(
+                                children: [
+                                  provider.tasks[i].intIdDone == 0
+                                      ? IconButton(
+                                          color: cSecondary,
+                                          style: buttonActionStyle,
+                                          onPressed: () {
+                                            updateTask(provider.tasks[i]);
+                                          },
+                                          icon: const Icon(Icons.check))
+                                      : const SizedBox.shrink(),
+                                  IconButton(
+                                      color: provider.tasks[i].intIdDone == 1
+                                          ? cWhite
+                                          : cError,
+                                      style: buttonActionStyle,
+                                      onPressed: () =>
+                                          delTask(provider.tasks[i]),
+                                      icon: const Icon(Icons.delete)),
+                                ],
+                              ),
                             ],
                           ),
                         ),
