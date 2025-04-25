@@ -7,3 +7,28 @@ final cardShape = RoundedRectangleBorder(
 
 const cardPadding =
     EdgeInsets.symmetric(horizontal: medRadius, vertical: medRadius);
+
+class CustomCard extends StatelessWidget {
+  final List<Widget> children;
+  final Color? color;
+  final double? height;
+  final double? width;
+  const CustomCard({
+    super.key,
+    this.color,
+    this.height,
+    this.width,
+    required this.children,
+  });
+  @override
+  Widget build(BuildContext context) {
+    return Card.filled(
+        shape: cardShape,
+        color: color,
+        child: Padding(
+            padding: cardPadding,
+            child: Row(
+              children: children,
+            )));
+  }
+}

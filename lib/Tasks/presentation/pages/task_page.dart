@@ -48,49 +48,42 @@ class _TaskPageState extends State<TaskPage> {
                 Expanded(
                   child: ListView.builder(
                     itemCount: provider.tasks.length,
-                    itemBuilder: (_, i) => Card.filled(
-                      shape: cardShape,
+                    itemBuilder: (_, i) => CustomCard(
                       color:
                           provider.tasks[i].intIdDone == 1 ? cSuccess : cGrey,
-                      child: Padding(
-                        padding: cardPadding,
-                        child: Row(
+                      children: [
+                        Text(
+                          '${provider.tasks[i].strTitle}',
+                          style: h6Font.copyWith(
+                            color: provider.tasks[i].intIdDone == 1
+                                ? cWhite
+                                : cBlack,
+                          ),
+                        ),
+                        const Spacer(),
+                        Row(
                           children: [
-                            Text(
-                              '${provider.tasks[i].strTitle}',
-                              style: h6Font.copyWith(
-                                color: provider.tasks[i].intIdDone == 1
-                                    ? cWhite
-                                    : cBlack,
-                              ),
-                            ),
-                            const Spacer(),
-                            Row(
-                              children: [
-                                provider.tasks[i].intIdDone == 0
-                                    ? IconButton(
-                                        color: cSecondary,
-                                        style: buttonActionStyle,
-                                        onPressed: () {
-                                          updateTask(
-                                              provider, provider.tasks[i]);
-                                        },
-                                        icon: const Icon(Icons.check))
-                                    : const SizedBox.shrink(),
-                                IconButton(
-                                  color: provider.tasks[i].intIdDone == 1
-                                      ? cWhite
-                                      : cError,
-                                  style: buttonActionStyle,
-                                  onPressed: () =>
-                                      delTask(provider, provider.tasks[i]),
-                                  icon: const Icon(Icons.delete),
-                                ),
-                              ],
+                            provider.tasks[i].intIdDone == 0
+                                ? CustomIconButton(
+                                    variant: 'secondary',
+                                    color: cSecondary,
+                                    onPressed: () {
+                                      updateTask(provider, provider.tasks[i]);
+                                    },
+                                    icon: const Icon(Icons.check))
+                                : const SizedBox.shrink(),
+                            CustomIconButton(
+                              variant: 'secondary',
+                              color: provider.tasks[i].intIdDone == 1
+                                  ? cWhite
+                                  : cError,
+                              onPressed: () =>
+                                  delTask(provider, provider.tasks[i]),
+                              icon: const Icon(Icons.delete),
                             ),
                           ],
                         ),
-                      ),
+                      ],
                     ),
                   ),
                 ),
@@ -99,15 +92,14 @@ class _TaskPageState extends State<TaskPage> {
                   child: Row(
                     children: [
                       Expanded(
-                        child: TextField(
+                        child: CustomInputField(
                           controller: controller,
-                          decoration: textFieldDecoration,
-                          style: pFont,
+                          onSubmitted: (value) => addTask(provider),
                         ),
                       ),
                       const SizedBox(width: medRadius),
-                      IconButton.filled(
-                        style: buttonStyle,
+                      CustomIconButton(
+                        variant: 'action',
                         icon: const Icon(Icons.add),
                         onPressed: () => addTask(provider),
                       ),

@@ -17,3 +17,22 @@ final textFieldDecoration = InputDecoration(
   contentPadding:
       const EdgeInsets.symmetric(horizontal: medRadius, vertical: smlRadius),
 );
+
+class CustomInputField extends StatelessWidget {
+  final TextEditingController controller;
+  final void Function(String)? onSubmitted;
+  const CustomInputField({
+    super.key,
+    required this.controller,
+    this.onSubmitted,
+  });
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: controller,
+      onSubmitted: onSubmitted,
+      decoration: textFieldDecoration,
+      style: pFont,
+    );
+  }
+}

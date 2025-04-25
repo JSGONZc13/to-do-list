@@ -43,6 +43,12 @@ final pFont = GoogleFonts.inter(
         fontWeight: FontWeight.w400,
         fontStyle: FontStyle.normal));
 
+final pFontBold = GoogleFonts.inter(
+    textStyle: const TextStyle(
+        fontSize: 14.0,
+        fontWeight: FontWeight.w600,
+        fontStyle: FontStyle.normal));
+
 final quoteFont = GoogleFonts.inter(
     textStyle: const TextStyle(
         fontSize: 14.0,
