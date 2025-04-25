@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 const cBlack = Color(0xff191919);
+const cBlackHover = Color(0xff494949);
 const cWhite = Color(0xfffcfcfc);
 const cGrey = Color(0xfff4f4f4);
 const cPrimary = Color(0xffbd3354);

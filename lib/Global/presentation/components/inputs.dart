@@ -6,7 +6,7 @@ import 'package:to_do_list_app/Global/presentation/styles/properties.dart';
 final textFieldDecoration = InputDecoration(
   border: OutlineInputBorder(
     borderRadius: BorderRadius.circular(smlRadius),
-    borderSide: const BorderSide(color: cBlack, width: 1.0),
+    borderSide: const BorderSide(color: cBlackHover, width: 1.0),
   ),
   focusedBorder: OutlineInputBorder(
     borderRadius: BorderRadius.circular(smlRadius),
