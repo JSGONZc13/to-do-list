@@ -55,11 +55,11 @@ class _TaskPageState extends State<TaskPage> {
                 itemCount: taskProvider.tasks.length,
                 itemBuilder: (_, i) => CustomCard(
                   color:
-                      taskProvider.tasks[i].intIdDone == 1 ? cSuccess : cGrey,
+                      taskProvider.tasks[i].intIdDone == 1 ? cSuccess : cWhiteInactive,
                   children: [
                     Text(
                       taskProvider.tasks[i].strTitle ?? '',
-                      style: h6Font.copyWith(
+                      style: pImportantesFont.copyWith(
                         color: taskProvider.tasks[i].intIdDone == 1
                             ? cWhite
                             : cBlack,

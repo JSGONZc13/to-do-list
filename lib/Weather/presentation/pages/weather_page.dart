@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:to_do_list_app/Global/presentation/components/custom_tabbar.dart';
+import 'package:to_do_list_app/Global/presentation/components/generals.dart';
 import 'package:to_do_list_app/Global/presentation/provider/system_provider.dart';
 import 'package:to_do_list_app/Global/presentation/styles/colors.dart';
 import 'package:to_do_list_app/Global/presentation/styles/fonts.dart';
@@ -50,11 +51,12 @@ class _WeatherPageState extends State<WeatherPage> {
       backgroundColor: cWhite,
       body: Center(
         child: isLoading
-            ? const CircularProgressIndicator()
+            ? const CustomCircularProgressIndicator()
             : Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('City: ${weatherProvider.cityName}', style: h3Font),
+                  Text('City: ${weatherProvider.cityName}',
+                      style: pResaltadoFont),
                   const SizedBox(height: lrgRadius),
                   Expanded(
                     child: DefaultTabController(

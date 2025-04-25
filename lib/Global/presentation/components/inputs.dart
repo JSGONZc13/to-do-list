@@ -13,7 +13,7 @@ final textFieldDecoration = InputDecoration(
     borderSide: const BorderSide(color: cPrimary, width: 1.0),
   ),
   hintText: 'Enter text',
-  hintStyle: quoteFont,
+  hintStyle: sBaseFont,
   contentPadding:
       const EdgeInsets.symmetric(horizontal: medRadius, vertical: smlRadius),
 );
@@ -33,9 +33,8 @@ class CustomInputField extends StatelessWidget {
     return TextField(
       controller: controller,
       onSubmitted: onSubmitted,
-      decoration:
-          variant == 'default' ? textFieldDecoration : null,
-      style: pFont,
+      decoration: variant == 'default' ? textFieldDecoration : null,
+      style: pInputsFont,
     );
   }
 }

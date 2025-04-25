@@ -4,7 +4,7 @@ import 'package:to_do_list_app/Global/presentation/styles/fonts.dart';
 import 'package:to_do_list_app/Global/presentation/styles/properties.dart';
 
 final tabDecoration = BoxDecoration(
-  color: cGrey, // o usa tu color personalizado
+  color: cWhiteInactive, // o usa tu color personalizado
   borderRadius: BorderRadius.circular(smlRadius),
 );
 
@@ -29,9 +29,9 @@ class CustomStyledTabBar extends StatelessWidget {
       dividerColor: cTransparent,
       labelColor: cPrimary,
       labelPadding: EdgeInsets.zero,
-      labelStyle: pFontBold,
+      labelStyle: pTabsBtnsFont,
       unselectedLabelColor: cBlack,
-      unselectedLabelStyle: pFont,
+      unselectedLabelStyle: pBaseFont,
       indicatorColor: cTransparent,
       indicator: tabDecorationSelected,
       tabs: tabs,

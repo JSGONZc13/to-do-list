@@ -18,12 +18,11 @@ class _DashboardState extends State<Dashboard> {
         appBar: AppBar(
           title: Text(
             pages[index]['label']!.toString(),
-            style: h3Font,
+            style: pTituloPrincipalFont,
           ),
           backgroundColor: cWhite,
         ),
-        body: SafeArea(
-            child: renderRoute(pages[index]['path']!.toString())),
+        body: SafeArea(child: renderRoute(pages[index]['path']!.toString())),
         bottomNavigationBar: NavigationBarTheme(
           data: NavigationBarThemeData(
             indicatorColor: cTransparent,
@@ -32,9 +31,9 @@ class _DashboardState extends State<Dashboard> {
             labelTextStyle: MaterialStateProperty.resolveWith(
                 (Set<MaterialState> states) =>
                     states.contains(MaterialState.selected)
-                        ? btnSmallFont.copyWith(
-                            color: cPrimary, fontWeight: FontWeight.w900)
-                        : btnSmallFont),
+                        ? pMinusculoFont.copyWith(
+                            color: cPrimary)
+                        : pMinusculoFont),
             iconTheme: MaterialStateProperty.resolveWith(
                 (Set<MaterialState> states) =>
                     states.contains(MaterialState.selected)
