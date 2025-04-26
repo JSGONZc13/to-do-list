@@ -52,23 +52,27 @@ class _WeatherPageState extends State<WeatherPage> {
     return Scaffold(
       appBar: AppBar(
         title: Center(
-            child: Text('City: ${weatherProvider.cityName}',
-                style: pTituloPrincipalFont)),
+            child: weatherProvider.cityName != null
+                ? Text('Ciudad: ${weatherProvider.cityName}',
+                    style: pTituloPrincipalFont)
+                : SizedBox.shrink()),
         backgroundColor: cWhite,
         surfaceTintColor: cWhite,
       ),
       backgroundColor: cWhite,
-      body: Padding(
-        padding: const EdgeInsets.all(smlRadius),
-        child: isLoading
-            ? const CustomCircularProgressIndicator()
-            : ListView(
-                children: [
-                  Temperature(weatherProvider),
-                  Rain(weatherProvider),
-                  WindSpeed(weatherProvider)
-                ],
-              ),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(smlRadius),
+          child: isLoading
+              ? const CustomCircularProgressIndicator()
+              : ListView(
+                  children: [
+                    Temperature(weatherProvider),
+                    Rain(weatherProvider),
+                    WindSpeed(weatherProvider)
+                  ],
+                ),
+        ),
       ),
     );
   }
