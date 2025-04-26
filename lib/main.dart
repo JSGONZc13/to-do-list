@@ -4,8 +4,6 @@ import 'package:provider/provider.dart';
 import 'package:to_do_list_app/Global/presentation/pages/dashboard.dart';
 import 'package:to_do_list_app/Global/presentation/provider/system_provider.dart';
 import 'package:to_do_list_app/Global/presentation/styles/colors.dart';
-// ignore: unused_import
-import 'package:to_do_list_app/Tasks/presentation/pages/task_page.dart';
 import 'package:to_do_list_app/Tasks/presentation/provider/task_provider.dart';
 import 'package:to_do_list_app/Weather/presentation/provider/weather_provider.dart';
 
