@@ -21,6 +21,7 @@ class _DashboardState extends State<Dashboard> {
             style: pTituloPrincipalFont,
           ),
           backgroundColor: cWhite,
+          surfaceTintColor: cWhite,
         ),
         body: SafeArea(child: renderRoute(pages[index]['path']!.toString())),
         bottomNavigationBar: NavigationBarTheme(
@@ -28,15 +29,15 @@ class _DashboardState extends State<Dashboard> {
             indicatorColor: cTransparent,
             surfaceTintColor: cWhite,
             backgroundColor: cWhite,
-            labelTextStyle: MaterialStateProperty.resolveWith(
-                (Set<MaterialState> states) =>
-                    states.contains(MaterialState.selected)
+            labelTextStyle: WidgetStateProperty.resolveWith(
+                (Set<WidgetState> states) =>
+                    states.contains(WidgetState.selected)
                         ? pMinusculoFont.copyWith(
                             color: cPrimary)
                         : pMinusculoFont),
-            iconTheme: MaterialStateProperty.resolveWith(
-                (Set<MaterialState> states) =>
-                    states.contains(MaterialState.selected)
+            iconTheme: WidgetStateProperty.resolveWith(
+                (Set<WidgetState> states) =>
+                    states.contains(WidgetState.selected)
                         ? const IconThemeData(color: cPrimary)
                         : const IconThemeData(color: cBlack)),
           ),

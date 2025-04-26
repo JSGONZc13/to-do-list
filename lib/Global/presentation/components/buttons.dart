@@ -3,13 +3,13 @@ import 'package:to_do_list_app/Global/presentation/styles/colors.dart';
 import 'package:to_do_list_app/Global/presentation/styles/properties.dart';
 
 const buttonStyle = ButtonStyle(
-  backgroundColor: MaterialStatePropertyAll(cPrimary),
-  padding: MaterialStatePropertyAll(EdgeInsets.all(medRadius)),
+  backgroundColor: WidgetStatePropertyAll(cPrimary),
+  padding: WidgetStatePropertyAll(EdgeInsets.all(medRadius)),
 );
 final buttonListStyle = ButtonStyle(
-  backgroundColor: const MaterialStatePropertyAll(cTransparent),
-  padding: const MaterialStatePropertyAll(EdgeInsets.all(0)),
-  shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+  backgroundColor: const WidgetStatePropertyAll(cTransparent),
+  padding: const WidgetStatePropertyAll(EdgeInsets.all(0)),
+  shape: WidgetStatePropertyAll(RoundedRectangleBorder(
     borderRadius: BorderRadius.circular(smlRadius), // rounded corners
   )),
 );

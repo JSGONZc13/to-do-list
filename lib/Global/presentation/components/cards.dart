@@ -9,7 +9,7 @@ const cardPadding =
     EdgeInsets.symmetric(horizontal: medRadius, vertical: medRadius);
 
 class CustomCard extends StatelessWidget {
-  final List<Widget> children;
+  final Widget? child;
   final Color? color;
   final double? height;
   final double? width;
@@ -18,17 +18,13 @@ class CustomCard extends StatelessWidget {
     this.color,
     this.height,
     this.width,
-    required this.children,
+    required this.child,
   });
   @override
   Widget build(BuildContext context) {
     return Card.filled(
         shape: cardShape,
         color: color,
-        child: Padding(
-            padding: cardPadding,
-            child: Row(
-              children: children,
-            )));
+        child: Padding(padding: cardPadding, child: child));
   }
 }

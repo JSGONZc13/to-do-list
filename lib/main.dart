@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(providers: [
       ChangeNotifierProvider(create: (_) => SystemProvider()),
       ChangeNotifierProvider(create: (_) => WeatherProvider()),
-      ChangeNotifierProvider(create: (_) => TaskProvider())
+      ChangeNotifierProvider(create: (_) => TaskProvider()),
     ], child: const MaterialApp(home: Dashboard()));
   }
 }

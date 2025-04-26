@@ -54,9 +54,10 @@ class _TaskPageState extends State<TaskPage> {
               child: ListView.builder(
                 itemCount: taskProvider.tasks.length,
                 itemBuilder: (_, i) => CustomCard(
-                  color:
-                      taskProvider.tasks[i].intIdDone == 1 ? cSuccess : cWhiteInactive,
-                  children: [
+                  color: taskProvider.tasks[i].intIdDone == 1
+                      ? cSuccess
+                      : cWhiteInactive,
+                  child: Row(children: [
                     Text(
                       taskProvider.tasks[i].strTitle ?? '',
                       style: pImportantesFont.copyWith(
@@ -90,7 +91,7 @@ class _TaskPageState extends State<TaskPage> {
                         ),
                       ],
                     ),
-                  ],
+                  ]),
                 ),
               ),
             ),

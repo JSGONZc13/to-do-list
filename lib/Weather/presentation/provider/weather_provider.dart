@@ -3,13 +3,13 @@ import 'package:geolocator/geolocator.dart';
 import 'package:to_do_list_app/Global/data/datasources/system_datasource.dart';
 import 'package:to_do_list_app/Weather/data/datasources/weather_datasource.dart';
 import 'package:to_do_list_app/Weather/data/repositories/weather_repository_impl.dart';
-import 'package:to_do_list_app/Weather/domain/entities/weather_forecast.dart';
+import 'package:to_do_list_app/Weather/domain/entities/weather_day.dart';
 
 class WeatherProvider extends ChangeNotifier {
   final repository =
       WeatherRepositoryImpl(SystemDataSource(), WeatherDatasource());
 
-  Map<String, List<WeatherForecast>>? weatherData;
+  List<WeatherDay>? weatherData;
   String? cityName;
 
   Future<void> loadWeather(Position position) async {
