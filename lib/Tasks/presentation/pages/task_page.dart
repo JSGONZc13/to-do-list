@@ -57,16 +57,21 @@ class _TaskPageState extends State<TaskPage> {
                   color: taskProvider.tasks[i].intIdDone == 1
                       ? cSuccess
                       : cWhiteInactive,
-                  child: Row(children: [
-                    Text(
-                      taskProvider.tasks[i].strTitle ?? '',
-                      style: pImportantesFont.copyWith(
-                        color: taskProvider.tasks[i].intIdDone == 1
-                            ? cWhite
-                            : cBlack,
+                  child: Flex(direction: Axis.horizontal, children: [
+                    Expanded(
+                      child: Text(
+                        taskProvider.tasks[i].strTitle ?? '',
+                        overflow: TextOverflow.visible,
+                        maxLines: null,
+                        softWrap: true,
+                        style: pImportantesFont.copyWith(
+                          color: taskProvider.tasks[i].intIdDone == 1
+                              ? cWhite
+                              : cBlack,
+                        ),
                       ),
                     ),
-                    const Spacer(),
+                    const SizedBox(width: smlRadius),
                     Row(
                       children: [
                         taskProvider.tasks[i].intIdDone == 0
