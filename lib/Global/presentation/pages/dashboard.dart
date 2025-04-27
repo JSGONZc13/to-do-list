@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_list_app/Global/presentation/components/custom_appbar.dart';
 import 'package:to_do_list_app/Global/presentation/routes/routes.dart';
 import 'package:to_do_list_app/Global/presentation/styles/colors.dart';
 import 'package:to_do_list_app/Global/presentation/styles/fonts.dart';
@@ -15,14 +16,7 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(
-            pages[index]['label']!.toString(),
-            style: pTituloPrincipalFont,
-          ),
-          backgroundColor: cWhite,
-          surfaceTintColor: cWhite,
-        ),
+        appBar: customAppBar(context: context, title: pages[index]['label']!.toString(),),
         body: SafeArea(child: renderRoute(pages[index]['path']!.toString())),
         bottomNavigationBar: NavigationBarTheme(
           data: NavigationBarThemeData(

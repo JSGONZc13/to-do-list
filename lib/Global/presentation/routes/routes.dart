@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_list_app/Company/presentation/company_page.dart';
 import 'package:to_do_list_app/Tasks/presentation/pages/task_page.dart';
 import 'package:to_do_list_app/Weather/presentation/pages/weather_page.dart';
 
@@ -16,6 +17,13 @@ final List<Map<String, Object?>> pages = [
     'iconActive': Icons.cloud,
     'iconInactive': Icons.cloud_outlined,
     'page': const WeatherPage()
+  },
+  {
+    'path': '/company',
+    'label': 'Company',
+    'iconActive': Icons.business,
+    'iconInactive': Icons.business_outlined,
+    'page': const CompanyPage()
   },
   {
     'path': '/profile',
