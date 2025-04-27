@@ -50,7 +50,7 @@ class _WeatherPageState extends State<WeatherPage> {
         weatherProvider.weatherData == null ||
         weatherProvider.cityName == null ||
         weatherProvider.weatherDailyData == null;
-
+    final cText = cWhite;
     return Scaffold(
       backgroundColor: cWhite,
       body: Center(
@@ -64,52 +64,89 @@ class _WeatherPageState extends State<WeatherPage> {
                     SliverAppBar(
                       shape: roundedShape,
                       backgroundColor: cPrimary,
+                      surfaceTintColor: cTransparent,
                       pinned: true,
                       expandedHeight: 250.0,
+                      centerTitle: true,
+                      title: Center(
+                        child: Text('${weatherProvider.cityName}',
+                            style: pBaseFont.copyWith(color: cText)),
+                      ),
                       flexibleSpace: FlexibleSpaceBar(
-                        centerTitle: true,
-                        title: Center(
-                          child: Text('Ciudad: ${weatherProvider.cityName}',
-                              style:
-                                  pTituloPrincipalFont.copyWith(color: cWhite)),
-                        ),
                         background: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
+                            Center(
+                              child: Text(
+                                  '${weatherProvider.weatherDailyData?.formattedDate}',
+                                  style: pBaseFont.copyWith(color: cText)),
+                            ),
                             if (weatherProvider.weatherDailyData != null)
-                              Row(
+                              Padding(
+                                padding: const EdgeInsets.all(medRadius),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      weatherCodes
+                                          .firstWhere((code) =>
+                                              code.code ==
+                                              weatherProvider.weatherDailyData!
+                                                  .weatherCode)
+                                          .icon,
+                                      size: 28,
+                                      color: cText,
+                                    ),
+                                    const SizedBox(width: medRadius),
+                                    Text(
+                                      weatherCodes
+                                          .firstWhere((code) =>
+                                              code.code ==
+                                              weatherProvider.weatherDailyData!
+                                                  .weatherCode)
+                                          .description,
+                                      style:
+                                          pResaltadoFont.copyWith(color: cText),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            Padding(
+                              padding: const EdgeInsets.all(medRadius),
+                              child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Icon(
-                                    weatherCodes
-                                        .firstWhere((code) =>
-                                            code.code ==
-                                            weatherProvider
-                                                .weatherDailyData!.weatherCode)
-                                        .icon,
-                                    size: 24,
-                                    color: cWhite,
+                                  Expanded(
+                                    child: Center(
+                                      child: Text(
+                                        'Min: ${weatherProvider.weatherDailyData!.minTemperature} °C',
+                                        style: pTitulosListasFont.copyWith(
+                                            color: cText),
+                                      ),
+                                    ),
                                   ),
-                                  const SizedBox(width: medRadius),
-                                  Text(
-                                    weatherCodes
-                                        .firstWhere((code) =>
-                                            code.code ==
-                                            weatherProvider
-                                                .weatherDailyData!.weatherCode)
-                                        .description,
-                                    style: pTituloPrincipalFont.copyWith(
-                                        color: cWhite),
+                                  Expanded(
+                                    child: Center(
+                                      child: Text(
+                                        'Max: ${weatherProvider.weatherDailyData!.maxTemperature} °C',
+                                        style: pTitulosListasFont.copyWith(
+                                            color: cText),
+                                      ),
+                                    ),
                                   )
                                 ],
                               ),
+                            ),
+                            Text(
+                                'Rain: ${weatherProvider.weatherDailyData?.rainSum} mm',
+                                style: pImportantesFont.copyWith(color: cText)),
                           ],
                         ),
                       ),
                     ),
                     SliverList(
                         delegate: SliverChildListDelegate([
-                      SizedBox(height: smlRadius),
+                      SizedBox(height: medRadius),
                       Temperature(weatherProvider),
                       Rain(weatherProvider),
                       WindSpeed(weatherProvider)
