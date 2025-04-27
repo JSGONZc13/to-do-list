@@ -22,6 +22,24 @@ class WeatherDatasource {
     }
   }
 
+  Future<dynamic> getWeatherDaily(String lat, String lng) async {
+    final url = Uri.https(weatherApiHost, weatherApiPath, {
+      'latitude': lat,
+      'longitude': lng,
+      'daily': dailyParams.join(','),
+      'timezone': timeZone,
+      'forecast_days': "1",
+    });
+
+    final response = await http.get(url);
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body);
+      return data;
+    } else {
+      throw Exception('Failed to load weather day data');
+    }
+  }
+
   Future<dynamic> getCityName(String lat, String lng) async {
     final url = Uri.https(locationMap, locationPath, {
       'lat': lat,

@@ -1,6 +1,6 @@
-import 'package:intl/intl.dart';
+import 'package:to_do_list_app/Weather/domain/entities/weather.dart';
 
-class WeatherForecast {
+class WeatherForecast extends Weather {
   final DateTime date;
   final double temperature;
   final double windSpeed;
@@ -11,8 +11,5 @@ class WeatherForecast {
     required this.temperature,
     required this.windSpeed,
     required this.rain,
-  });
-
-  String get formattedDate => DateFormat('dd/MM/yyyy HH:mm').format(date);
-  String get formattedHour => DateFormat('HH:mm').format(date);
+  }) : super(date: date);
 }

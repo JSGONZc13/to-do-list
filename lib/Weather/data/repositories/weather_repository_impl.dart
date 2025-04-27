@@ -1,9 +1,11 @@
 import 'dart:math';
 
+import 'package:flutter/material.dart';
 import 'package:geolocator_platform_interface/src/models/position.dart';
 import 'package:intl/intl.dart';
 import 'package:to_do_list_app/Global/data/datasources/system_datasource.dart';
 import 'package:to_do_list_app/Weather/data/datasources/weather_datasource.dart';
+import 'package:to_do_list_app/Weather/domain/entities/weather_daily.dart';
 import 'package:to_do_list_app/Weather/domain/entities/weather_day.dart';
 import 'package:to_do_list_app/Weather/domain/entities/weather_forecast.dart';
 import 'package:to_do_list_app/Weather/domain/repositories/weather_repository.dart';
@@ -66,5 +68,24 @@ class WeatherRepositoryImpl implements WeatherRepository {
   Future<String> getCityName(String lat, String lng) async {
     final cityName_ = await weatherDatasource.getCityName(lat, lng);
     return cityName_.toString();
+  }
+
+  @override
+  Future<WeatherDaily> getWeatherDaily(String lat, String lng) async {
+    final json = await weatherDatasource.getWeatherDaily(lat, lng);
+    final time = json['daily']['time'][0] as String;
+    final weatherCode = json['daily']['weather_code'][0] as int;
+    final temperatureMin = json['daily']['temperature_2m_min'][0] as double;
+    final temperatureMax = json['daily']['temperature_2m_max'][0] as double;
+    final rainSum = json['daily']['rain_sum'][0] as double;
+
+    final weatherDaily = WeatherDaily(
+      date: DateTime.parse(time),
+      weatherCode: weatherCode,
+      maxTemperature: temperatureMax,
+      minTemperature: temperatureMin,
+      rainSum: rainSum,
+    );
+    return weatherDaily;
   }
 }

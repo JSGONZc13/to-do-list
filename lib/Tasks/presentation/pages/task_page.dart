@@ -52,6 +52,7 @@ class _TaskPageState extends State<TaskPage> {
           children: [
             Expanded(
               child: ListView.builder(
+                physics: const BouncingScrollPhysics(),
                 itemCount: taskProvider.tasks.length,
                 itemBuilder: (_, i) => CustomCard(
                   color: taskProvider.tasks[i].intIdDone == 1
