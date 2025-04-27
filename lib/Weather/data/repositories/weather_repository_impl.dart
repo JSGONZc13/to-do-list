@@ -1,6 +1,4 @@
 import 'dart:math';
-
-import 'package:flutter/material.dart';
 import 'package:geolocator_platform_interface/src/models/position.dart';
 import 'package:intl/intl.dart';
 import 'package:to_do_list_app/Global/data/datasources/system_datasource.dart';
