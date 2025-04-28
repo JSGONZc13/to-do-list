@@ -14,11 +14,8 @@ class PageRoutes {
   static String addCompany = '/company/add';
 }
 
-final Routes = {
-  PageRoutes.initial: (context) => const Dashboard(), // Dashboard con tasks
-  PageRoutes.tasks: (context) => const Dashboard(), // Dashboard con tasks
-  PageRoutes.weather: (context) => const Dashboard(), // Dashboard con weather
-  PageRoutes.company: (context) => const Dashboard(),
+final Routes = { // Gestión de rutas que no se manejan en el dashboard
+  PageRoutes.initial: (context) => const Dashboard(),
   PageRoutes.addCompany: (context) => const AddCompanyPage()
 };
 
