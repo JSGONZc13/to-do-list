@@ -3,6 +3,7 @@ import 'package:to_do_list_app/Global/presentation/components/custom_appbar.dart
 import 'package:to_do_list_app/Global/presentation/routes/routes.dart';
 import 'package:to_do_list_app/Global/presentation/styles/colors.dart';
 import 'package:to_do_list_app/Global/presentation/styles/fonts.dart';
+import 'package:to_do_list_app/Global/presentation/styles/properties.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -16,8 +17,16 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: customAppBar(context: context, title: pages[index]['label']!.toString(),),
-        body: SafeArea(child: renderRoute(pages[index]['path']!.toString())),
+        appBar: customAppBar(
+          context: context,
+          title: pages[index]['label']!.toString(),
+        ),
+        backgroundColor: cWhite,
+        body: SafeArea(
+            child: Padding(
+          padding: const EdgeInsets.all(smlRadius),
+          child: renderRoute(pages[index]['path']!.toString()),
+        )),
         bottomNavigationBar: NavigationBarTheme(
           data: NavigationBarThemeData(
             indicatorColor: cTransparent,
@@ -26,8 +35,7 @@ class _DashboardState extends State<Dashboard> {
             labelTextStyle: WidgetStateProperty.resolveWith(
                 (Set<WidgetState> states) =>
                     states.contains(WidgetState.selected)
-                        ? pMinusculoFont.copyWith(
-                            color: cPrimary)
+                        ? pMinusculoFont.copyWith(color: cPrimary)
                         : pMinusculoFont),
             iconTheme: WidgetStateProperty.resolveWith(
                 (Set<WidgetState> states) =>

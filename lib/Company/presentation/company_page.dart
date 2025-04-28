@@ -30,56 +30,51 @@ class _CompanyPageState extends State<CompanyPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: cWhite,
-      body: Padding(
-          padding: const EdgeInsets.all(smlRadius),
-          child: Flex(
-            direction: Axis.vertical,
-            children: [
-              Expanded(
-                child: ListView(
-                  physics: const BouncingScrollPhysics(),
-                  children: [
-                    CustomCard(
-                      color: cWhiteHover,
-                      child: Text(
-                        'Company',
-                        style: pImportantesFont,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: smlRadius),
-              Padding(
-                padding: const EdgeInsets.all(smlRadius),
-                child: Container(
-                  width: double.infinity,
-                  child: CustomButton(
-                    variant: 'main',
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const AddCompanyPage(),
-                        ),
-                      );
-                    },
-                    child: Flex(
-                      direction: Axis.horizontal,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.add, color: cWhite),
-                        const SizedBox(width: medRadius),
-                        Text('New Company',
-                            style: pTabsBtnsFont.copyWith(color: cWhite)),
-                      ],
-                    ),
+      backgroundColor: cTransparent,
+      body: Flex(
+        direction: Axis.vertical,
+        spacing: medRadius,
+        children: [
+          Expanded(
+            child: ListView(
+              physics: const BouncingScrollPhysics(),
+              children: [
+                CustomCard(
+                  color: cWhiteHover,
+                  child: Text(
+                    'Company',
+                    style: pImportantesFont,
                   ),
                 ),
+              ],
+            ),
+          ),
+          Container(
+            width: double.infinity,
+            child: CustomButton(
+              variant: 'main',
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const AddCompanyPage(),
+                  ),
+                );
+              },
+              child: Flex(
+                spacing: medRadius,
+                direction: Axis.horizontal,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.add, color: cWhite),
+                  Text('New Company',
+                      style: pTabsBtnsFont.copyWith(color: cWhite)),
+                ],
               ),
-            ],
-          )),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

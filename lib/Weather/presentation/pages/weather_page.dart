@@ -66,40 +66,45 @@ class _WeatherPageState extends State<WeatherPage> {
     }
 
     return Scaffold(
-        backgroundColor: cWhite,
+        backgroundColor: cTransparent,
         body: CustomRefreshIndicator(
           onRefresh: _refreshWeather,
-          child: Padding(
-              padding: const EdgeInsets.all(smlRadius),
-              child: isLoading
-                  ? Center(child: const CustomCircularProgressIndicator())
-                  : Flex(
-                      direction: Axis.vertical,
-                      children: [
-                        Container(
-                            decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  colors: [cPrimaryHover, cPrimary],
-                                  begin: Alignment.bottomLeft,
-                                  end: Alignment.topRight,
-                                ),
-                                borderRadius: BorderRadius.circular(smlRadius)),
-                            child: Padding(
-                              padding: const EdgeInsets.all(lrgRadius),
-                              child: Flex(direction: Axis.vertical, children: [
-                                Column(
+          child: isLoading
+              ? Center(child: const CustomCircularProgressIndicator())
+              : Flex(
+                  spacing: medRadius,
+                  direction: Axis.vertical,
+                  children: [
+                    Container(
+                        decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [cPrimaryHover, cPrimary],
+                              begin: Alignment.bottomLeft,
+                              end: Alignment.topRight,
+                            ),
+                            borderRadius: BorderRadius.circular(smlRadius)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(lrgRadius),
+                          child: Flex(
+                              spacing: medRadius,
+                              direction: Axis.vertical,
+                              children: [
+                                Flex(
+                                  direction: Axis.vertical,
+                                  spacing: smlRadius,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text('${weatherProvider.cityName}',
                                         style:
                                             pBaseFont.copyWith(color: cText)),
-                                    const SizedBox(height: smlRadius),
                                     Text(
                                         '${weatherProvider.weatherDailyData?.formattedDate}',
                                         style: pBaseFont.copyWith(color: cText))
                                   ],
                                 ),
-                                Row(
+                                Flex(
+                                  direction: Axis.horizontal,
+                                  spacing: medRadius,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Icon(
@@ -112,7 +117,6 @@ class _WeatherPageState extends State<WeatherPage> {
                                       size: 28,
                                       color: cText,
                                     ),
-                                    const SizedBox(width: medRadius),
                                     Text(
                                       weatherCodes
                                           .firstWhere((code) =>
@@ -125,8 +129,9 @@ class _WeatherPageState extends State<WeatherPage> {
                                     )
                                   ],
                                 ),
-                                const SizedBox(height: medRadius),
-                                Row(
+                                Flex(
+                                  direction: Axis.horizontal,
+                                  spacing: medRadius,
                                   children: [
                                     Expanded(
                                       child: Center(
@@ -149,7 +154,6 @@ class _WeatherPageState extends State<WeatherPage> {
                                     ),
                                   ],
                                 ),
-                                const SizedBox(height: medRadius),
                                 SizedBox(
                                   child: Center(
                                     child: Text(
@@ -159,19 +163,18 @@ class _WeatherPageState extends State<WeatherPage> {
                                   ),
                                 )
                               ]),
-                            )),
-                        const SizedBox(height: medRadius),
-                        Expanded(
-                            child: ListView(
-                          physics: const BouncingScrollPhysics(),
-                          children: [
-                            Temperature(weatherProvider),
-                            Rain(weatherProvider),
-                            WindSpeed(weatherProvider)
-                          ],
                         )),
+                    Expanded(
+                        child: ListView(
+                      physics: const BouncingScrollPhysics(),
+                      children: [
+                        Temperature(weatherProvider),
+                        Rain(weatherProvider),
+                        WindSpeed(weatherProvider)
                       ],
                     )),
+                  ],
+                ),
         ));
   }
 }

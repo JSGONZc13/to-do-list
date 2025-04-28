@@ -45,83 +45,82 @@ class _TaskPageState extends State<TaskPage> {
   Widget build(BuildContext context) {
     final taskProvider = context.watch<TaskProvider>();
     return Scaffold(
-      backgroundColor: cWhite,
-      body: Padding(
-        padding: const EdgeInsets.all(smlRadius),
-        child: Column(
-          children: [
-            Expanded(
-              child: ListView.builder(
-                physics: const BouncingScrollPhysics(),
-                itemCount: taskProvider.tasks.length,
-                itemBuilder: (_, i) => CustomCard(
-                  color: taskProvider.tasks[i].intIdDone == 1
-                      ? cSuccess
-                      : cWhiteInactive,
-                  child: Flex(direction: Axis.horizontal, children: [
-                    Expanded(
-                      child: Text(
-                        taskProvider.tasks[i].strTitle ?? '',
-                        overflow: TextOverflow.visible,
-                        maxLines: null,
-                        softWrap: true,
-                        style: pImportantesFont.copyWith(
-                          color: taskProvider.tasks[i].intIdDone == 1
-                              ? cWhite
-                              : cBlack,
+      backgroundColor: cTransparent,
+      body: Flex(
+        direction: Axis.vertical,
+        spacing: medRadius,
+        children: [
+          Expanded(
+            child: ListView.builder(
+              physics: const BouncingScrollPhysics(),
+              itemCount: taskProvider.tasks.length,
+              itemBuilder: (_, i) => CustomCard(
+                color: taskProvider.tasks[i].intIdDone == 1
+                    ? cSuccess
+                    : cWhiteInactive,
+                child: Flex(
+                    spacing: smlRadius,
+                    direction: Axis.horizontal,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          taskProvider.tasks[i].strTitle ?? '',
+                          overflow: TextOverflow.visible,
+                          maxLines: null,
+                          softWrap: true,
+                          style: pImportantesFont.copyWith(
+                            color: taskProvider.tasks[i].intIdDone == 1
+                                ? cWhite
+                                : cBlack,
+                          ),
                         ),
                       ),
-                    ),
-                    const SizedBox(width: smlRadius),
-                    Row(
-                      children: [
-                        taskProvider.tasks[i].intIdDone == 0
-                            ? CustomIconButton(
-                                variant: 'secondary',
-                                color: cSecondary,
-                                onPressed: () {
-                                  updateTask(
-                                      taskProvider, taskProvider.tasks[i]);
-                                },
-                                icon: const Icon(Icons.check),
-                              )
-                            : const SizedBox.shrink(),
-                        CustomIconButton(
-                          variant: 'secondary',
-                          color: taskProvider.tasks[i].intIdDone == 1
-                              ? cWhite
-                              : cError,
-                          onPressed: () =>
-                              delTask(taskProvider, taskProvider.tasks[i]),
-                          icon: const Icon(Icons.delete),
-                        ),
-                      ],
-                    ),
-                  ]),
+                      Row(
+                        children: [
+                          taskProvider.tasks[i].intIdDone == 0
+                              ? CustomIconButton(
+                                  variant: 'secondary',
+                                  color: cSecondary,
+                                  onPressed: () {
+                                    updateTask(
+                                        taskProvider, taskProvider.tasks[i]);
+                                  },
+                                  icon: const Icon(Icons.check),
+                                )
+                              : const SizedBox.shrink(),
+                          CustomIconButton(
+                            variant: 'secondary',
+                            color: taskProvider.tasks[i].intIdDone == 1
+                                ? cWhite
+                                : cError,
+                            onPressed: () =>
+                                delTask(taskProvider, taskProvider.tasks[i]),
+                            icon: const Icon(Icons.delete),
+                          ),
+                        ],
+                      ),
+                    ]),
+              ),
+            ),
+          ),
+          Flex(
+            direction: Axis.horizontal,
+            spacing: medRadius,
+            children: [
+              Expanded(
+                child: CustomInputField(
+                  controller: controller,
+                  onSubmitted: (value) => addTask(taskProvider),
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(smlRadius),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: CustomInputField(
-                      controller: controller,
-                      onSubmitted: (value) => addTask(taskProvider),
-                    ),
-                  ),
-                  const SizedBox(width: medRadius),
-                  CustomIconButton(
-                    variant: 'action',
-                    icon: const Icon(Icons.add),
-                    onPressed: () => addTask(taskProvider),
-                  ),
-                ],
+              CustomIconButton(
+                variant: 'action',
+                icon: const Icon(Icons.add),
+                onPressed: () => addTask(taskProvider),
               ),
-            ),
-          ],
-        ),
+            ],
+          ),
+        ],
       ),
     );
   }
