@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_list_app/Company/presentation/add_company.dart';
 import 'package:to_do_list_app/Global/presentation/components/buttons.dart';
 import 'package:to_do_list_app/Global/presentation/components/cards.dart';
+import 'package:to_do_list_app/Global/presentation/routes/routes.dart';
 import 'package:to_do_list_app/Global/presentation/styles/colors.dart';
 import 'package:to_do_list_app/Global/presentation/styles/fonts.dart';
 import 'package:to_do_list_app/Global/presentation/styles/properties.dart';
@@ -54,12 +54,7 @@ class _CompanyPageState extends State<CompanyPage> {
             child: CustomButton(
               variant: 'main',
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const AddCompanyPage(),
-                  ),
-                );
+                Navigator.pushNamed(context, PageRoutes.addCompany);
               },
               child: Flex(
                 spacing: medRadius,

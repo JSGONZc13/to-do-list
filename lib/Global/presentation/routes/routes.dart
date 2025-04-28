@@ -1,32 +1,51 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_list_app/Company/presentation/add_company.dart';
 import 'package:to_do_list_app/Company/presentation/company_page.dart';
+import 'package:to_do_list_app/Global/presentation/pages/dashboard.dart';
 import 'package:to_do_list_app/Tasks/presentation/pages/task_page.dart';
 import 'package:to_do_list_app/Weather/presentation/pages/weather_page.dart';
 
+class PageRoutes {
+  static String initial = '/';
+  static String tasks = '/tasks';
+  static String weather = '/weather';
+  static String company = '/company';
+  static String profile = '/profile';
+  static String addCompany = '/company/add';
+}
+
+final Routes = {
+  PageRoutes.initial: (context) => const Dashboard(), // Dashboard con tasks
+  PageRoutes.tasks: (context) => const Dashboard(), // Dashboard con tasks
+  PageRoutes.weather: (context) => const Dashboard(), // Dashboard con weather
+  PageRoutes.company: (context) => const Dashboard(),
+  PageRoutes.addCompany: (context) => const AddCompanyPage()
+};
+
 final List<Map<String, Object?>> pages = [
   {
-    'path': '/tasks',
+    'path': PageRoutes.tasks,
     'label': 'Tasks',
     'iconActive': Icons.task,
     'iconInactive': Icons.task_outlined,
     'page': const TaskPage()
   },
   {
-    'path': '/weather',
+    'path': PageRoutes.weather,
     'label': 'Weather',
     'iconActive': Icons.cloud,
     'iconInactive': Icons.cloud_outlined,
     'page': const WeatherPage()
   },
   {
-    'path': '/company',
+    'path': PageRoutes.company,
     'label': 'Company',
     'iconActive': Icons.business,
     'iconInactive': Icons.business_outlined,
     'page': const CompanyPage()
   },
   {
-    'path': '/profile',
+    'path': PageRoutes.profile,
     'label': 'Profile',
     'iconActive': Icons.person,
     'iconInactive': Icons.person_outline,
