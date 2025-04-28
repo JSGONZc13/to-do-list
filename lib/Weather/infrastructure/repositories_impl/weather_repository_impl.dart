@@ -1,8 +1,8 @@
 import 'dart:math';
 import 'package:geolocator_platform_interface/src/models/position.dart';
 import 'package:intl/intl.dart';
-import 'package:to_do_list_app/Global/data/datasources/system_datasource.dart';
-import 'package:to_do_list_app/Weather/data/datasources/weather_datasource.dart';
+import 'package:to_do_list_app/Global/infrastructure/datasources/system_datasource.dart';
+import 'package:to_do_list_app/Weather/infrastructure/data_sources/weather_datasource.dart';
 import 'package:to_do_list_app/Weather/domain/entities/weather_daily.dart';
 import 'package:to_do_list_app/Weather/domain/entities/weather_day.dart';
 import 'package:to_do_list_app/Weather/domain/entities/weather_forecast.dart';

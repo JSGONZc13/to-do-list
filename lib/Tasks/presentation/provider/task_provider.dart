@@ -1,11 +1,11 @@
 import 'package:flutter/foundation.dart';
-import 'package:to_do_list_app/Tasks/data/datasources/task_local_datasource.dart';
-import 'package:to_do_list_app/Tasks/data/repositories/task_repository_impl.dart';
+import 'package:to_do_list_app/Tasks/infrastructure/data_sources/task_local_datasource.dart';
+import 'package:to_do_list_app/Tasks/infrastructure/repositories_impl/task_repository_impl.dart';
 import 'package:to_do_list_app/Tasks/domain/entities/task.dart';
-import 'package:to_do_list_app/Tasks/domain/use_cases/add_task.dart';
-import 'package:to_do_list_app/Tasks/domain/use_cases/del_task.dart';
-import 'package:to_do_list_app/Tasks/domain/use_cases/get_tasks.dart';
-import 'package:to_do_list_app/Tasks/domain/use_cases/update_task.dart';
+import 'package:to_do_list_app/Tasks/application/use_cases/add_task.dart';
+import 'package:to_do_list_app/Tasks/application/use_cases/del_task.dart';
+import 'package:to_do_list_app/Tasks/application/use_cases/get_tasks.dart';
+import 'package:to_do_list_app/Tasks/application/use_cases/update_task.dart';
 
 class TaskProvider extends ChangeNotifier {
   final repository = TaskRepositoryImpl(TaskLocalDataSource());

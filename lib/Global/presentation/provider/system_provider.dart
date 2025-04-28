@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:to_do_list_app/Global/core/utils/system_helper.dart';
-import 'package:to_do_list_app/Global/data/datasources/system_datasource.dart';
+import 'package:to_do_list_app/Global/domain/utils/helpers/system_helper.dart';
+import 'package:to_do_list_app/Global/infrastructure/datasources/system_datasource.dart';
 import 'package:to_do_list_app/Global/presentation/routes/routes.dart';
-import 'package:to_do_list_app/Weather/data/datasources/weather_datasource.dart';
-import 'package:to_do_list_app/Weather/data/repositories/weather_repository_impl.dart';
-import 'package:to_do_list_app/Weather/domain/use_cases/get_geolocation.dart';
+import 'package:to_do_list_app/Weather/infrastructure/data_sources/weather_datasource.dart';
+import 'package:to_do_list_app/Weather/infrastructure/repositories_impl/weather_repository_impl.dart';
+import 'package:to_do_list_app/Weather/application/use_cases/get_geolocation.dart';
 
 class SystemProvider extends ChangeNotifier {
   final repository =

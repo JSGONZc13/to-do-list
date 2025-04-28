@@ -1,8 +1,8 @@
-import 'package:to_do_list_app/Global/core/connections/urls.dart';
+import 'package:to_do_list_app/Global/domain/utils/connections/urls.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:to_do_list_app/Weather/core/connections/nominatim.dart';
-import 'package:to_do_list_app/Weather/core/connections/open_meteo.dart';
+import 'package:to_do_list_app/Weather/domain/utils/connections/nominatim.dart';
+import 'package:to_do_list_app/Weather/domain/utils/connections/open_meteo.dart';
 
 class WeatherDatasource {
   Future<dynamic> getWeather(String lat, String lng) async {

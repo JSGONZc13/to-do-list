@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:to_do_list_app/Global/data/datasources/system_datasource.dart';
-import 'package:to_do_list_app/Weather/data/datasources/weather_datasource.dart';
-import 'package:to_do_list_app/Weather/data/repositories/weather_repository_impl.dart';
+import 'package:to_do_list_app/Global/infrastructure/datasources/system_datasource.dart';
+import 'package:to_do_list_app/Weather/infrastructure/data_sources/weather_datasource.dart';
+import 'package:to_do_list_app/Weather/infrastructure/repositories_impl/weather_repository_impl.dart';
 import 'package:to_do_list_app/Weather/domain/entities/weather_daily.dart';
 import 'package:to_do_list_app/Weather/domain/entities/weather_day.dart';
 

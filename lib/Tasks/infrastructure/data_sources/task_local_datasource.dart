@@ -1,5 +1,5 @@
-import 'package:to_do_list_app/Tasks/core/utils/database_helper.dart';
-import 'package:to_do_list_app/Tasks/data/models/task_model.dart';
+import 'package:to_do_list_app/Tasks/domain/utils/database_helper.dart';
+import 'package:to_do_list_app/Tasks/application/models/task_model.dart';
 
 class TaskLocalDataSource {
   Future<List<TaskModel>> getTasks() async {

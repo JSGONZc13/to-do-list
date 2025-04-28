@@ -5,7 +5,7 @@ import 'package:to_do_list_app/Global/presentation/provider/system_provider.dart
 import 'package:to_do_list_app/Global/presentation/styles/colors.dart';
 import 'package:to_do_list_app/Global/presentation/styles/fonts.dart';
 import 'package:to_do_list_app/Global/presentation/styles/properties.dart';
-import 'package:to_do_list_app/Weather/core/utils/weather_codes.dart';
+import 'package:to_do_list_app/Weather/domain/utils/value_objects/weather_codes.dart';
 import 'package:to_do_list_app/Weather/presentation/components/rain.dart';
 import 'package:to_do_list_app/Weather/presentation/components/temperature.dart';
 import 'package:to_do_list_app/Weather/presentation/components/wind_speed.dart';
