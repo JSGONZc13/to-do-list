@@ -57,7 +57,7 @@ class CustomButton extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
+    return TextButton(
       style: variant == 'main' ? buttonMainStyle : buttonListStyle,
       onPressed: onPressed,
       child: child,
