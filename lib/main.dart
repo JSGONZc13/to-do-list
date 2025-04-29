@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:to_do_list_app/Company/presentation/provider/company_provider.dart';
 import 'package:to_do_list_app/Global/presentation/provider/system_provider.dart';
 import 'package:to_do_list_app/Global/presentation/routes/routes.dart';
 import 'package:to_do_list_app/Global/presentation/styles/colors.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => SystemProvider()),
         ChangeNotifierProvider(create: (_) => WeatherProvider()),
         ChangeNotifierProvider(create: (_) => TaskProvider()),
+        ChangeNotifierProvider(create: (_) => CompanyProvider())
       ],
       child: MaterialApp(
         title: 'To Do List App',

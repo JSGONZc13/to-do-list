@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_list_app/Company/presentation/add_company.dart';
-import 'package:to_do_list_app/Company/presentation/company_page.dart';
+import 'package:to_do_list_app/Company/presentation/pages/add_company.dart';
+import 'package:to_do_list_app/Company/presentation/pages/company_page.dart';
 import 'package:to_do_list_app/Global/presentation/pages/dashboard.dart';
 import 'package:to_do_list_app/Tasks/presentation/pages/task_page.dart';
 import 'package:to_do_list_app/Weather/presentation/pages/weather_page.dart';

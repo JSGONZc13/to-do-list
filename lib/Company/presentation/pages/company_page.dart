@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:to_do_list_app/Company/presentation/provider/company_provider.dart';
 import 'package:to_do_list_app/Global/presentation/components/buttons.dart';
 import 'package:to_do_list_app/Global/presentation/components/cards.dart';
 import 'package:to_do_list_app/Global/presentation/routes/routes.dart';
@@ -14,21 +16,18 @@ class CompanyPage extends StatefulWidget {
 }
 
 class _CompanyPageState extends State<CompanyPage> {
-  bool _hasLoaded = false;
-
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
 
-    // Solo ejecuta la lógica una vez para evitar múltiples llamados
-    if (!_hasLoaded) {
-      // Aquí puedes agregar la lógica que deseas ejecutar una sola vez
-      _hasLoaded = true;
-    }
+    final companyProvider = context.read<CompanyProvider>();
+
+    companyProvider.getCompanies();
   }
 
   @override
   Widget build(BuildContext context) {
+    final companyProvider = context.watch<CompanyProvider>();
     return Scaffold(
       backgroundColor: cTransparent,
       body: Flex(
@@ -36,19 +35,22 @@ class _CompanyPageState extends State<CompanyPage> {
         spacing: medRadius,
         children: [
           Expanded(
-            child: ListView(
-              physics: const BouncingScrollPhysics(),
-              children: [
-                CustomCard(
-                  color: cWhiteHover,
-                  child: Text(
-                    'Company',
-                    style: pImportantesFont,
-                  ),
-                ),
-              ],
+              child: ListView.builder(
+            physics: const BouncingScrollPhysics(),
+            itemCount: companyProvider.companiesData.length,
+            itemBuilder: (_, i) => CustomCard(
+              color: cWhiteInactive,
+              child: Flex(
+                direction: Axis.vertical,
+                spacing: medRadius,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('${companyProvider.companiesData[i].name}'),
+                  Text('${companyProvider.companiesData[i].address}'),
+                ],
+              ),
             ),
-          ),
+          )),
           Container(
             width: double.infinity,
             child: CustomButton(
