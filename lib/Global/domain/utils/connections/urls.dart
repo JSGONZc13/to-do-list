@@ -1,6 +1,6 @@
 const String weatherApiHost = 'api.open-meteo.com';
 const String appointmentApiHost =
-    'https://appointmentmanager-asdfd6hcgydvb7es.canadacentral-01.azurewebsites.net';
+    'httpss://appointmentmanager-asdfd6hcgydvb7es.canadacentral-01.azurewebsites.net/';
 const String appointmentKey =
     'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNzQ1ODI5MDQ1LCJpc3MiOiJBcHBvaW50bWVudE1hbmFnZXJBUEkifQ.R36NZRIZs4kSen7zeLH0y6lxSpNsEakYySd2ZW__IS4';
 const String locationMap = 'nominatim.openstreetmap.org';

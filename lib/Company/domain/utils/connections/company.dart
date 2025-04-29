@@ -1,1 +1,1 @@
-const String companyApi = '/api/Company';
+const String companyApi = 'api/Company';
