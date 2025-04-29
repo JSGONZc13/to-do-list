@@ -10,6 +10,7 @@ class ModeloProvider extends ChangeNotifier {
   late final GetModelos _getModelos = GetModelos(repository);
 
   List<ModeloEvaluacion> getModelosData = [];
+  int? getModelosCode;
   String? getModelosMensaje;
   bool getModelosLoading = true;
 
@@ -19,10 +20,12 @@ class ModeloProvider extends ChangeNotifier {
     try {
       final GetEvaluacionRes response = await _getModelos();
       getModelosMensaje = response.message;
+      getModelosCode = response.code;
       if (response.code == 0 && response.modelos != null) {
         getModelosData = response.modelos!;
       }
     } catch (e) {
+      getModelosCode = 9999;
       getModelosData = [];
       getModelosMensaje =
           "Error al recuperar los modelos, intente nuevamente más tarde";

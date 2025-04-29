@@ -40,11 +40,14 @@ class _ModeloPageState extends State<ModeloPage> {
             direction: Axis.vertical,
             spacing: medRadius,
             children: [
+              if (modeloProvider.getModelosLoading &&
+                  modeloProvider.getModelosCode == 0)
+                const CustomCircularProgressIndicator(),
               Expanded(
-                  child: modeloProvider.getModelosData.length <= 0 &&
+                  child: modeloProvider.getModelosCode != 0 &&
                           modeloProvider.getModelosLoading
                       ? Center(child: CustomCircularProgressIndicator())
-                      : modeloProvider.getModelosData.length <= 0 &&
+                      : modeloProvider.getModelosCode != 0 &&
                               !modeloProvider.getModelosLoading
                           ? Flex(
                               direction: Axis.vertical,
