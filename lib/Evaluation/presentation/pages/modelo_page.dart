@@ -61,7 +61,7 @@ class _ModeloPageState extends State<ModeloPage> {
                                           children: [
                                             Icon(
                                               Icons.error_outline,
-                                              size: 64,
+                                              size: xxlRadius,
                                               color: cError,
                                             ),
                                             SizedBox(
