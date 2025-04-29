@@ -19,14 +19,10 @@ class WeatherPage extends StatefulWidget {
 }
 
 class _WeatherPageState extends State<WeatherPage> {
-  bool _hasLoaded = false;
-
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-
-    // Solo ejecuta la lógica una vez para evitar múltiples llamados
-    if (!_hasLoaded) {
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       final systemProvider = context.read<SystemProvider>();
       final weatherProvider = context.read<WeatherProvider>();
 
@@ -36,9 +32,7 @@ class _WeatherPageState extends State<WeatherPage> {
           weatherProvider.loadWeather(pos);
         }
       });
-
-      _hasLoaded = true;
-    }
+    });
   }
 
   @override
@@ -103,7 +97,7 @@ class _WeatherPageState extends State<WeatherPage> {
                                   ],
                                 ),
                                 Flex(
-                                  direction: Axis.horizontal,
+                                  direction: Axis.vertical,
                                   spacing: medRadius,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
@@ -117,15 +111,16 @@ class _WeatherPageState extends State<WeatherPage> {
                                       size: 28,
                                       color: cText,
                                     ),
-                                    Text(
-                                      weatherCodes
-                                          .firstWhere((code) =>
-                                              code.code ==
-                                              weatherProvider.weatherDailyData!
-                                                  .weatherCode)
-                                          .description,
-                                      style:
-                                          pResaltadoFont.copyWith(color: cText),
+                                    SizedBox(
+                                      child: Text(
+                                        textAlign: TextAlign.center,
+                                        overflow: TextOverflow.visible,
+                                        maxLines: null,
+                                        softWrap: true,
+                                        '${weatherCodes.firstWhere((code) => code.code == weatherProvider.weatherDailyData!.weatherCode).description}',
+                                        style: pResaltadoFont.copyWith(
+                                            color: cText),
+                                      ),
                                     )
                                   ],
                                 ),

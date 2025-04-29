@@ -22,6 +22,19 @@ final buttonMainStyle = ButtonStyle(
   )),
 );
 
+final buttonSecondaryStyle = ButtonStyle(
+  foregroundColor: WidgetStatePropertyAll(cBlack),
+  backgroundColor: WidgetStatePropertyAll(cWhite),
+  padding: WidgetStatePropertyAll(EdgeInsets.all(medRadius)),
+  shape: WidgetStatePropertyAll(RoundedRectangleBorder(
+    side: BorderSide(
+      width: 1,
+      color: cPrimary
+    ),
+    borderRadius: BorderRadius.circular(smlRadius),
+  )),
+);
+
 class CustomIconButton extends StatelessWidget {
   final String variant;
   final void Function()? onPressed;
@@ -58,7 +71,7 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      style: variant == 'main' ? buttonMainStyle : buttonListStyle,
+      style: variant == 'main' ? buttonMainStyle : variant == 'secondary' ? buttonSecondaryStyle :buttonListStyle,
       onPressed: onPressed,
       child: child,
     );

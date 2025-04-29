@@ -20,10 +20,12 @@ class _TaskPageState extends State<TaskPage> {
   final TextEditingController controller = TextEditingController();
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    final taskProvider = context.read<TaskProvider>();
-    taskProvider.getTasks();
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final taskProvider = context.read<TaskProvider>();
+      taskProvider.getTasks();
+    });
   }
 
   void addTask(TaskProvider provider) {

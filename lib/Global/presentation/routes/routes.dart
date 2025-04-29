@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_list_app/Company/presentation/pages/add_company.dart';
-import 'package:to_do_list_app/Company/presentation/pages/company_page.dart';
+import 'package:to_do_list_app/Evaluation/presentation/pages/modelo_page.dart';
 import 'package:to_do_list_app/Global/presentation/pages/dashboard.dart';
 import 'package:to_do_list_app/Tasks/presentation/pages/task_page.dart';
 import 'package:to_do_list_app/Weather/presentation/pages/weather_page.dart';
@@ -9,14 +8,14 @@ class PageRoutes {
   static String initial = '/';
   static String tasks = '/tasks';
   static String weather = '/weather';
-  static String company = '/company';
+  static String models = '/models';
   static String profile = '/profile';
   static String addCompany = '/company/add';
 }
 
-final Routes = { // Gestión de rutas que no se manejan en el dashboard
-  PageRoutes.initial: (context) => const Dashboard(),
-  PageRoutes.addCompany: (context) => const AddCompanyPage()
+final Routes = {
+  // Gestión de rutas que no se manejan en el dashboard
+  PageRoutes.initial: (context) => const Dashboard()
 };
 
 final List<Map<String, Object?>> pages = [
@@ -35,11 +34,11 @@ final List<Map<String, Object?>> pages = [
     'page': const WeatherPage()
   },
   {
-    'path': PageRoutes.company,
-    'label': 'Company',
-    'iconActive': Icons.business,
-    'iconInactive': Icons.business_outlined,
-    'page': const CompanyPage()
+    'path': PageRoutes.models,
+    'label': 'Models',
+    'iconActive': Icons.calculate,
+    'iconInactive': Icons.calculate_outlined,
+    'page': const ModeloPage()
   },
   {
     'path': PageRoutes.profile,
