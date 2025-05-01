@@ -19,9 +19,9 @@ class ModeloProvider extends ChangeNotifier {
     notifyListeners();
     try {
       final GetEvaluacionRes response = await _getModelos();
-      getModelosMensaje = response.message;
-      getModelosCode = response.code;
-      if (response.code == 0 && response.modelos != null) {
+      getModelosMensaje = response.apiResponse?.message;
+      getModelosCode = response.apiResponse?.code;
+      if (response.apiResponse?.code == 0 && response.modelos != null) {
         getModelosData = response.modelos!;
       }
     } catch (e) {

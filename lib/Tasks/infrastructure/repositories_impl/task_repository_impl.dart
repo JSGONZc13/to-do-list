@@ -1,7 +1,7 @@
 import 'package:to_do_list_app/Tasks/infrastructure/data_sources/task_local_datasource.dart';
 import 'package:to_do_list_app/Tasks/application/models/task_model.dart';
 import 'package:to_do_list_app/Tasks/domain/entities/task.dart';
-import 'package:to_do_list_app/Tasks/application/repositories/task_repository.dart';
+import 'package:to_do_list_app/Tasks/domain/repositories/task_repository.dart';
 
 class TaskRepositoryImpl implements TaskRepository {
   final TaskLocalDataSource taskLocalDataSource;

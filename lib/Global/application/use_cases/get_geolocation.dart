@@ -1,5 +1,5 @@
 import 'package:geolocator/geolocator.dart';
-import 'package:to_do_list_app/Global/application/repositories/system_repository.dart';
+import 'package:to_do_list_app/Global/domain/repositories/system_repository.dart';
 
 class GetGeolocation {
   final SystemRepository systemRepository;
