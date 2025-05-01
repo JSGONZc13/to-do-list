@@ -1,5 +1,5 @@
 import 'package:to_do_list_app/Weather/domain/entities/weather_daily.dart';
-import 'package:to_do_list_app/Weather/domain/repositories/weather_repository.dart';
+import 'package:to_do_list_app/Weather/application/repositories/weather_repository.dart';
 
 class GetWeatherDay {
   final WeatherRepository repository;

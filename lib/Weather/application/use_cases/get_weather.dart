@@ -1,4 +1,4 @@
-import 'package:to_do_list_app/Weather/domain/repositories/weather_repository.dart';
+import 'package:to_do_list_app/Weather/application/repositories/weather_repository.dart';
 
 class GetWeather {
   final WeatherRepository weatherRepository;

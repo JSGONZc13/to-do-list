@@ -4,7 +4,7 @@ import 'package:to_do_list_app/Weather/infrastructure/data_sources/weather_datas
 import 'package:to_do_list_app/Weather/domain/entities/weather_daily.dart';
 import 'package:to_do_list_app/Weather/domain/entities/weather_day.dart';
 import 'package:to_do_list_app/Weather/domain/entities/weather_forecast.dart';
-import 'package:to_do_list_app/Weather/domain/repositories/weather_repository.dart';
+import 'package:to_do_list_app/Weather/application/repositories/weather_repository.dart';
 
 class WeatherRepositoryImpl implements WeatherRepository {
   final WeatherDatasource weatherDatasource;

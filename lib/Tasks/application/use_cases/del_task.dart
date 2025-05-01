@@ -1,5 +1,5 @@
 import 'package:to_do_list_app/Tasks/domain/entities/task.dart';
-import 'package:to_do_list_app/Tasks/domain/repositories/task_repository.dart';
+import 'package:to_do_list_app/Tasks/application/repositories/task_repository.dart';
 
 class DelTask {
   final TaskRepository taskRepository;
