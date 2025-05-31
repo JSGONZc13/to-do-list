@@ -7,6 +7,7 @@ import 'package:to_do_list_app/Global/presentation/components/generals.dart';
 import 'package:to_do_list_app/Global/presentation/styles/colors.dart';
 import 'package:to_do_list_app/Global/presentation/styles/fonts.dart';
 import 'package:to_do_list_app/Global/presentation/styles/properties.dart';
+import 'package:to_do_list_app/Global/presentation/widgets/error_response.dart';
 
 class ModeloPage extends StatefulWidget {
   const ModeloPage({super.key});
@@ -49,58 +50,10 @@ class _ModeloPageState extends State<ModeloPage> {
                       ? Center(child: CustomCircularProgressIndicator())
                       : modeloProvider.getModelosCode != 0 &&
                               !modeloProvider.getModelosLoading
-                          ? Flex(
-                              direction: Axis.vertical,
-                              spacing: medRadius,
-                              children: [
-                                  Center(
-                                    child: CustomCard(
-                                        color: cWhiteHover,
-                                        child: Flex(
-                                          spacing: medRadius,
-                                          direction: Axis.vertical,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Icon(
-                                              Icons.error_outline,
-                                              size: xxlRadius,
-                                              color: cError,
-                                            ),
-                                            SizedBox(
-                                              child: Text(
-                                                textAlign: TextAlign.center,
-                                                overflow: TextOverflow.visible,
-                                                maxLines: null,
-                                                softWrap: true,
-                                                '¡Error!',
-                                                style: pTituloPrincipalFont
-                                                    .copyWith(color: cError),
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              child: Text(
-                                                textAlign: TextAlign.center,
-                                                overflow: TextOverflow.visible,
-                                                maxLines: null,
-                                                softWrap: true,
-                                                '${modeloProvider.getModelosMensaje}',
-                                                style: pBaseFont,
-                                              ),
-                                            )
-                                          ],
-                                        )),
-                                  ),
-                                  CustomButton(
-                                    variant: 'secondary',
-                                    child: Text(
-                                      'Volver a intentar',
-                                      style:
-                                          pTabsBtnsFont.copyWith(color: cBlack),
-                                    ),
-                                    onPressed: _refreshModels,
-                                  )
-                                ])
+                          ? ErrorResponse(
+                              errorMessage: modeloProvider.getModelosMensaje ??
+                                  'Error al recuperar los modelos',
+                              onPressed: _refreshModels)
                           : ListView.builder(
                               physics: const BouncingScrollPhysics(),
                               itemCount: modeloProvider.getModelosData.length,
